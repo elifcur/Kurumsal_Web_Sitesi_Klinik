@@ -152,7 +152,8 @@ class ClinicTemplateTest extends TestCase
             Service::query()->ordered()->limit(4)->pluck('title')->all()
         );
         $this->assertSame('/images/templates/clinic/service-2.jpg', Service::query()->where('title', 'Çocuk Sağlığı ve Hastalıkları')->value('image'));
-        $this->assertNull(Service::query()->where('title', 'Diş Sağlığı')->value('image'), 'Eşleşen fotoğrafı olmayan birimler ikon ile gösterilmeli');
+        $this->assertSame('/images/templates/clinic/service-5.jpg', Service::query()->where('title', 'Diş Sağlığı')->value('image'));
+        $this->assertSame('/images/templates/clinic/service-8.jpg', Service::query()->where('title', 'Fizik Tedavi ve Rehabilitasyon')->value('image'));
 
         $this->get('/')->assertOk()->assertSee('Kardiyoloji')->assertSee('Uzm. Dr. Ayşe Yılmaz')->assertSee('Allianz')
             ->assertSee('/images/templates/clinic/hero.jpg')->assertSee('/images/templates/clinic/service-3.jpg');
