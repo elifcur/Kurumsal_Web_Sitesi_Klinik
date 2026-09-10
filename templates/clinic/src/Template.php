@@ -97,6 +97,7 @@ class Template extends BaseTemplate
     public function settingFields(): array
     {
         return [
+            'page_header_image' => ['label' => 'İç sayfa bant görseli', 'type' => 'image', 'help' => 'Tıbbi birimler, doktorlar, blog ve iletişim gibi iç sayfaların üst bandında koyu overlay altında gösterilir; boşsa hero görseli kullanılır. 1920x640 önerilir.'],
             'hero_eyebrow' => ['label' => 'Hero üst yazısı', 'type' => 'text', 'help' => 'Başlığın üstünde küçük, aralıklı büyük harflerle gösterilir.', 'rules' => ['max:80']],
             'hero_card_title' => ['label' => 'Hero yüzen kart başlığı', 'type' => 'text', 'rules' => ['max:60']],
             'hero_card_text' => ['label' => 'Hero yüzen kart alt satırı', 'type' => 'text', 'rules' => ['max:60']],

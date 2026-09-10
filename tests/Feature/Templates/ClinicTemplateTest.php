@@ -147,6 +147,7 @@ class ClinicTemplateTest extends TestCase
         $this->assertNotNull(TeamMember::query()->first()->attribute('Uzmanlık'));
         $this->assertSame('/images/templates/clinic/logo.png', setting('logo'));
         $this->assertSame('/images/templates/clinic/hero.jpg', setting('hero_image'));
+        $this->assertSame('/images/templates/clinic/page-header.jpg', setting('page_header_image'));
         $this->assertSame(
             ['Kardiyoloji', 'Çocuk Sağlığı ve Hastalıkları', 'Ortopedi ve Travmatoloji', 'Dermatoloji'],
             Service::query()->ordered()->limit(4)->pluck('title')->all()

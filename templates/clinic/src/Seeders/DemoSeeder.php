@@ -30,6 +30,7 @@ class DemoSeeder extends Seeder
         $settings = app(Settings::class);
         $settings->set('logo', '/images/templates/clinic/logo.png', 'general');
         $settings->set('hero_image', '/images/templates/clinic/hero.jpg', 'home');
+        $settings->set('page_header_image', '/images/templates/clinic/page-header.jpg', 'template');
         $settings->set('hero_card_title', '', 'template'); // demo fotoğrafında kart zaten var
         if (! setting('phone')) {
             $settings->set('phone', '+90 212 000 00 00', 'general');

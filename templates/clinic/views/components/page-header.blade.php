@@ -1,6 +1,6 @@
 @props(['title', 'subtitle' => null, 'image' => null, 'breadcrumbs' => []])
 @push('head')<script type="application/ld+json">{!! breadcrumb_schema($breadcrumbs) !!}</script>@endpush
-@php($background = $image ?: setting('hero_image'))
+@php($background = $image ?: setting('page_header_image') ?: setting('hero_image'))
 <section class="relative overflow-hidden bg-ink text-white">
     @if($background)<img src="{{ upload_url($background) }}" alt="" class="absolute inset-0 h-full w-full object-cover object-right">@endif
     <div class="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/80 to-ink/50"></div>
