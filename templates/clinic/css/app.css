@@ -1,0 +1,89 @@
+@import 'tailwindcss';
+@import '../../../resources/css/base.css';
+
+@source '../views/**/*.blade.php';
+@source '../../../resources/views/components/*.blade.php';
+@source '../../../resources/views/errors/*.blade.php';
+@source '../../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+/*
+ * Klinik şablonu: petrol mavi marka rengi + lacivert mürekkep, açık tonlu fotoğraflı hero,
+ * beyaz kartlar (küçük yuvarlaklık), serif bölüm başlıkları, altın kısa vurgu çizgisi.
+ * --color-primary admin panelinden değiştirilebilir (layouts/app.blade.php içinde inline :root ile ezilir).
+ */
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Instrument Serif', 'Georgia', serif;
+
+    --color-primary: #0f6f85;
+    --color-primary-dark: #0b5568;
+    --color-primary-light: #e3f1f5;
+    --color-primary-contrast: #ffffff;
+    --color-accent: #c9a25a;
+    --color-mist: #f3f8fa;
+    --color-mist-dark: #e3eef2;
+    --color-ink: #0b3b4c;
+}
+
+@layer base {
+    body {
+        @apply bg-white text-slate-700 antialiased;
+        font-family: var(--font-sans);
+    }
+
+    h1, h2 {
+        font-family: var(--font-display);
+        font-weight: 400;
+        letter-spacing: -0.02em;
+    }
+
+    h1 em {
+        font-style: normal;
+        color: var(--color-primary);
+    }
+
+    h2 em {
+        font-style: italic;
+        color: var(--color-primary);
+    }
+}
+
+@layer components {
+    /* Dolgulu petrol marka butonu; çerçeveli ikincil; koyu zeminler için beyaz / beyaz çerçeveli */
+    .btn-primary { @apply btn rounded-lg bg-primary text-primary-contrast shadow-sm hover:bg-primary-dark; }
+    .btn-brand { @apply btn rounded-lg bg-primary text-primary-contrast shadow-sm hover:bg-primary-dark; }
+    .btn-dark { @apply btn rounded-lg bg-ink text-white hover:bg-slate-800; }
+    .btn-outline { @apply btn rounded-lg border border-primary/40 bg-white/70 text-ink hover:border-primary hover:bg-white; }
+    .btn-light { @apply btn rounded-lg bg-white text-primary-dark shadow-sm hover:bg-primary-light; }
+    .btn-outline-light { @apply btn rounded-lg border border-white/40 text-white hover:bg-white/10; }
+    .btn-ghost-light { @apply btn rounded-lg border border-white/40 text-white hover:bg-white/10; }
+
+    .section { @apply py-16 md:py-24; }
+    .section-title { @apply font-display text-4xl tracking-tight text-ink md:text-5xl; }
+    .section-subtitle { @apply mt-4 max-w-2xl text-lg text-slate-600; }
+    .section-line { @apply mt-4 block h-0.5 w-12 bg-accent; }
+    .eyebrow { @apply mb-3 block text-xs font-medium tracking-[0.25em] text-slate-500 uppercase; }
+    .link-arrow { @apply inline-flex items-center gap-2 text-sm font-semibold text-primary underline decoration-primary/60 decoration-2 underline-offset-8 transition hover:text-primary-dark; }
+
+    /* Hero: fotoğraf üstüne beyazımsı-mavi soluk overlay, soldan beyaz → şeffaf */
+    .hero-bg { background: linear-gradient(180deg, #f3f8fa 0%, #ffffff 100%); }
+    .hero-veil { background: linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.82) 30%, rgba(234, 244, 248, 0.45) 55%, rgba(234, 244, 248, 0.12) 100%); }
+    .hero-title em { @apply block; }
+
+    .logo-grid { @apply grid grid-cols-2 border-t border-l border-slate-200 sm:grid-cols-3 lg:grid-cols-6; }
+    .logo-grid > * { @apply flex h-24 items-center justify-center border-r border-b border-slate-200 bg-white px-6 text-sm font-semibold text-slate-500 grayscale transition hover:grayscale-0; }
+
+    .card { @apply rounded-lg border border-slate-100 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md; }
+    .icon-box { @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary; }
+    .icon-badge { @apply flex h-12 w-12 items-center justify-center rounded-full bg-white text-primary shadow-md ring-1 ring-slate-100; }
+
+    .nav-link { @apply relative px-2.5 py-2 text-[13px] xl:px-3 xl:text-sm font-medium whitespace-nowrap text-ink transition hover:text-primary; }
+    .nav-link-active { @apply text-primary after:absolute after:inset-x-3 after:-bottom-1 after:h-0.5 after:bg-primary; }
+
+    .pill { @apply inline-flex items-center gap-1 rounded-full bg-primary-light px-3 py-1 text-xs font-semibold text-primary-dark; }
+    .chip { @apply inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700; }
+
+    .status-pending { @apply rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-800; }
+    .status-confirmed { @apply rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-semibold text-emerald-800; }
+    .status-cancelled { @apply rounded-full bg-rose-100 px-2.5 py-0.5 text-xs font-semibold text-rose-800; }
+}
