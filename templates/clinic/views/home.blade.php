@@ -56,7 +56,7 @@
             <x-section-heading eyebrow="Hizmetlerimiz" :title="setting('services_home_title', 'Sağlığınız İçin Buradayız')" :actionUrl="route('services.index')" :actionLabel="'Tüm '.setting('services_label', 'Tıbbi Birimler')" />
             <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
                 @foreach($services as $service)<x-service-card :service="$service" />@endforeach
-                <div class="relative flex flex-col overflow-hidden rounded-lg bg-primary p-6 text-white sm:col-span-2 lg:col-span-1">
+                <div class="relative flex flex-col overflow-hidden rounded-lg bg-primary p-6 text-white sm:col-span-2 lg:col-span-{{ 5 - $services->count() % 5 }}">
                     <span class="flex h-11 w-11 items-center justify-center rounded-lg bg-white/15"><x-icon name="calendar" class="h-6 w-6" /></span>
                     <h3 class="mt-4 text-xl font-semibold">Online Randevu</h3>
                     <p class="mt-2 text-sm leading-6 text-white/85">{{ setting('online_appointment_text', 'Uzman doktorlarımızdan kolayca randevu alın, sağlığınızı ertelemeyin.') }}</p>

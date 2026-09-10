@@ -151,7 +151,7 @@ class Template extends BaseTemplate
         $services = Service::query()->active()->ordered()->get();
 
         return [
-            'services' => $services->take(4),
+            'services' => $services->take(8),
             'team' => TeamMember::query()->active()->where('is_featured', true)->ordered()->limit(4)->get(),
             'testimonials' => Testimonial::query()->active()->ordered()->limit(3)->get(),
             'faqs' => Faq::query()->active()->ordered()->limit(6)->get(),
