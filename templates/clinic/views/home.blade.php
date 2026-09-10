@@ -36,23 +36,16 @@
     <div class="container-x relative z-10 -mt-10">
         <div class="grid divide-y divide-slate-200 rounded-lg bg-white shadow-lg sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-5 lg:divide-x">
             @foreach([
-                ['cpu', 'Modern', 'Tıbbi Teknoloji', null],
-                ['heart', 'Hasta Odaklı', 'Hizmet', null],
-                ['calendar', 'Kolay', 'Randevu Sistemi', route('appointments.create')],
-                ['map-pin', 'Merkezi', 'Konum', setting('address') ? route('contact.show') : null],
-                ['phone', '7/24 Hasta', 'Destek Hattı', setting('emergency_phone') ? phone_href(setting('emergency_phone')) : null],
-            ] as [$icon, $line1, $line2, $href])
-                @if($href)
-                    <a href="{{ $href }}" class="flex items-center gap-4 px-6 py-5 transition hover:bg-mist">
-                        <span class="icon-box"><x-icon :name="$icon" class="h-6 w-6" /></span>
-                        <span class="text-sm leading-6 font-semibold text-ink">{{ $line1 }}<span class="block">{{ $line2 }}</span></span>
-                    </a>
-                @else
-                    <div class="flex items-center gap-4 px-6 py-5">
-                        <span class="icon-box"><x-icon :name="$icon" class="h-6 w-6" /></span>
-                        <span class="text-sm leading-6 font-semibold text-ink">{{ $line1 }}<span class="block">{{ $line2 }}</span></span>
-                    </div>
-                @endif
+                ['cpu', 'Modern', 'Tıbbi Teknoloji'],
+                ['heart', 'Hasta Odaklı', 'Hizmet'],
+                ['calendar', 'Kolay', 'Randevu Sistemi'],
+                ['map-pin', 'Merkezi', 'Konum'],
+                ['phone', '7/24 Hasta', 'Destek Hattı'],
+            ] as [$icon, $line1, $line2])
+                <div class="flex items-center gap-4 px-6 py-5">
+                    <span class="icon-box"><x-icon :name="$icon" class="h-6 w-6" /></span>
+                    <span class="text-sm leading-6 font-semibold text-ink">{{ $line1 }}<span class="block">{{ $line2 }}</span></span>
+                </div>
             @endforeach
         </div>
     </div>
